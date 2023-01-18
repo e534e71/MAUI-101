@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Lesson.Model"
+             xmlns:viewmodel="clr-namespace:Lesson.ViewModel"
+             x:DataType="viewmodel:AllUsersPageViewModel"
+             x:Class="Lesson.View.AllUsersPage"
+             Title="{Binding Title}">
+    <VerticalStackLayout>
+        <Button Command="{Binding GetUsersCommand}"/>
+        <ScrollView MaximumHeightRequest="250">
+            <CollectionView ItemsSource="{Binding UserList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Result">
+                        <Grid>
+                            <Label Text="{Binding Dob.Date}"/>
+                            <Image Source="{Binding Picture.Large}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>
